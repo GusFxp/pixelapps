@@ -1,23 +1,22 @@
-// === app.js ===
 const express = require("express");
-const path = require("path");
 const sequelize = require("./database");
-const publicRoutes = require("./routes/public");
-const adminRoutes = require("./routes/admin");
+const App = require("./models/App");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// Sincroniza o banco e cria as tabelas, se não existirem
+sequelize
+  .sync()
+  .then(() => {
+    console.log("Banco sincronizado.");
+  })
+  .catch(console.error);
 
-app.use("/", publicRoutes);
-app.use("/admin", adminRoutes);
+// Sua aplicação aqui...
 
-sequelize.sync({ alter: true }).then(() => {
-  app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+app.listen(3000, () => {
+  console.log("Servidor rodando na porta 3000");
 });
