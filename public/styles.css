@@ -1,108 +1,89 @@
-/* Fundo com partículas */
-body,
-html {
+body {
   margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #020d26;
-  overflow-x: hidden;
   font-family: "Orbitron", sans-serif;
+  background-color: #020d26;
   color: #00ccff;
+  background-image: radial-gradient(#00ccff 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-#particle-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-}
-
-/* Topo */
 .top-bar {
+  background: #000000aa;
   padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  text-align: center;
+  border-bottom: 2px solid #00ccff;
 }
 
-.logo {
-  font-size: 1.8rem;
-  color: white;
+.top-bar h1 {
+  margin: 0;
+  font-size: 28px;
 }
 
-.logo span {
-  color: #00ccff;
-}
-
-.btn-register {
-  background-color: #00ccff;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-.btn-register:hover {
-  background-color: #00aaff;
-}
-
-/* Lista de apps */
-.app-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 30px;
-}
-
-.app-card {
-  background-color: #0d1117;
-  border-radius: 12px;
-  padding: 15px;
-  width: 240px;
-  box-shadow: 0 0 10px #00ccff44;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.app-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 15px #00ccff88;
-}
-
-.app-image {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.app-info {
+.top-bar nav {
   margin-top: 10px;
 }
 
-.app-name {
-  font-size: 1.2rem;
-  margin: 0;
+.top-bar a {
   color: #00ccff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.app-description {
-  font-size: 0.9rem;
-  color: #ccc;
+.top-bar a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.btn {
+  display: inline-block;
+  background: #00ccff;
+  color: #000;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #00aaff;
+}
+
+form {
+  margin-top: 15px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
   margin-top: 5px;
+  background: #01122f;
+  border: 1px solid #00ccff55;
+  color: #00ccff;
+  border-radius: 4px;
+  font-family: inherit;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 2rem;
-  margin: 40px 0 20px;
+button {
+  background: #00ccff;
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #00aaff;
 }

@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Admin - Lista de Apps</title>
-  </head>
-  <body>
-    <h1>Apps cadastrados</h1>
-    <a href="/admin/apps/new">Adicionar novo app</a>
-    <ul>
-      <% apps.forEach(app => { %>
-      <li>
-        <strong><%= app.nome %></strong> (<%= app.categoria %>)
-        <br />
-        <a href="/admin/apps/<%= app.id %>/edit">Editar</a> |
-        <form
-          action="/admin/apps/<%= app.id %>/delete"
-          method="POST"
-          style="display: inline"
-        >
-          <button type="submit" onclick="return confirm('Confirma exclusão?')">
-            Excluir
-          </button>
-        </form>
-      </li>
-      <% }) %>
-    </ul>
-  </body>
-</html>
+<% layout('layout') %> <% title = 'Apps cadastrados' %>
+
+<h2>Apps cadastrados</h2>
+
+<a href="/admin/apps/new" class="btn">➕ Adicionar novo app</a>
+
+<ul>
+  <% apps.forEach(app => { %>
+  <li style="margin-bottom: 15px">
+    <strong><%= app.nome %></strong> (<%= app.categoria %> - <%= app.plataforma
+    %> v<%= app.versao %>)<br />
+    <a href="<%= app.link %>" target="_blank">🔗 Link de download</a><br />
+    <a href="/admin/apps/<%= app.id %>/edit" class="btn">✏️ Editar</a>
+    <form
+      action="/admin/apps/<%= app.id %>/delete"
+      method="POST"
+      style="display: inline"
+    >
+      <button type="submit" onclick="return confirm('Confirma exclusão?')">
+        🗑️ Excluir
+      </button>
+    </form>
+  </li>
+  <% }) %>
+</ul>

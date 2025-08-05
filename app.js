@@ -6,6 +6,9 @@ const App = require("./models/App");
 const adminRouter = require("./routes/admin");
 
 const app = express();
+const expressLayouts = require("express-ejs-layouts");
+app.use(expressLayouts);
+app.set("layout", "layout"); // usa views/layout.ejs por padrão
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

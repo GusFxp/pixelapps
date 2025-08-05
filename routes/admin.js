@@ -2,6 +2,16 @@ const express = require("express");
 const router = express.Router();
 const App = require("../models/App");
 
+// Dashboard admin
+router.get("/", async (req, res) => {
+  try {
+    const total = await App.count();
+    res.render("admin/dashboard", { total });
+  } catch (error) {
+    res.status(500).send("Erro ao carregar dashboard");
+  }
+});
+
 // Listar apps
 router.get("/apps", async (req, res) => {
   try {

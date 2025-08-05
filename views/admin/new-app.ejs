@@ -1,51 +1,45 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Admin - Novo App</title>
-  </head>
-  <body>
-    <h1>Adicionar novo app</h1>
-    <form action="/admin/apps" method="POST">
-      <label
-        >Nome:<br />
-        <input type="text" name="nome" required /> </label
-      ><br /><br />
+<% layout('layout') %> <% title = 'Novo App' %>
 
-      <label
-        >Descrição:<br />
-        <textarea name="descricao" required></textarea></label
-      ><br /><br />
+<h2>Adicionar novo app</h2>
 
-      <label
-        >Categoria:<br />
-        <input type="text" name="categoria" required /> </label
-      ><br /><br />
+<form action="/admin/apps" method="POST">
+  <label
+    >Nome:<br />
+    <input type="text" name="nome" required /> </label
+  ><br /><br />
 
-      <label
-        >Plataforma:<br />
-        <input type="text" name="plataforma" required /> </label
-      ><br /><br />
+  <label
+    >Descrição:<br />
+    <textarea name="descricao" required></textarea></label
+  ><br /><br />
 
-      <label
-        >Versão:<br />
-        <input type="text" name="versao" required /> </label
-      ><br /><br />
+  <label
+    >Categoria:<br />
+    <input type="text" name="categoria" required /> </label
+  ><br /><br />
 
-      <label
-        >Link para download:<br />
-        <input type="text" name="link" required /> </label
-      ><br /><br />
+  <label
+    >Plataforma:<br />
+    <input type="text" name="plataforma" required /> </label
+  ><br /><br />
 
-      <label
-        >Imagem (URL):<br />
-        <input type="text" name="imagem" /> </label
-      ><br /><br />
+  <label
+    >Versão:<br />
+    <input type="text" name="versao" required /> </label
+  ><br /><br />
 
-      <button type="submit">Salvar</button>
-    </form>
+  <label
+    >Link para download:<br />
+    <input type="text" name="link" required /> </label
+  ><br /><br />
 
-    <br />
-    <a href="/admin/apps">Voltar à lista</a>
-  </body>
-</html>
+  <label
+    >Imagem (URL):<br />
+    <input type="text" name="imagem" /> </label
+  ><br /><br />
+
+  <button type="submit">💾 Salvar</button>
+</form>
+
+<br />
+<a href="/admin/apps" class="btn">⬅️ Voltar à lista</a>
