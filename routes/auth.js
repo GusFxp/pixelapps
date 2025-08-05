@@ -79,7 +79,11 @@ router.post("/login", async (req, res) => {
     }
 
     // Login bem-sucedido
-    req.session.user = { id: user.id, username: user.username };
+    req.session.user = {
+      id: user.id,
+      username: user.username,
+      isAdmin: user.isAdmin,
+    };
     res.redirect("/admin");
   } catch (err) {
     console.error(err);

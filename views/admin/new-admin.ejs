@@ -1,0 +1,23 @@
+<h2>Novo Administrador</h2>
+
+<% if (errors && errors.length) { %>
+<ul style="color: red">
+  <% errors.forEach(err => { %>
+  <li><%= err %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<form action="/admin/users/new" method="POST">
+  <label
+    >Usuário:<br />
+    <input type="text" name="username" required /> </label
+  ><br /><br />
+
+  <label
+    >Senha:<br />
+    <input type="password" name="password" required /> </label
+  ><br /><br />
+
+  <button type="submit">Criar Admin</button>
+</form>

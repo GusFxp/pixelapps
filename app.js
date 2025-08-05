@@ -9,6 +9,7 @@ const flash = require("connect-flash");
 const adminRouter = require("./routes/admin");
 const publicRouter = require("./routes/public");
 const authRouter = require("./routes/auth"); // vai precisar criar essa rota depois
+const adminUsersRouter = require("./routes/admin-users");
 
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
@@ -59,6 +60,7 @@ app.use((req, res, next) => {
 app.use("/", publicRouter);
 app.use("/auth", authRouter); // Rotas de login/registro/logout
 app.use("/admin", adminRouter);
+app.use("/admin/users", adminUsersRouter);
 
 // Sincronizar banco
 sequelize

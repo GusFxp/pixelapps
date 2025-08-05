@@ -1,0 +1,32 @@
+<h2>Administradores</h2>
+
+<% if (success_msg) { %>
+<p style="color: green"><%= success_msg %></p>
+<% } %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuário</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% admins.forEach(admin => { %>
+    <tr>
+      <td><%= admin.username %></td>
+      <td>
+        <form
+          action="/admin/users/delete/<%= admin.id %>"
+          method="POST"
+          onsubmit="return confirm('Tem certeza?')"
+        >
+          <button type="submit">Remover</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<a href="/admin/users/new">➕ Adicionar novo admin</a>
