@@ -1,15 +1,18 @@
 {
   "name": "pixelapps",
   "version": "1.0.0",
+  "description": "Site PixelApps com Node.js, Express, Sequelize e SQLite",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GusFxp/pixelapps.git"
   },
-  "author": "",
+  "author": "Gus",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GusFxp/pixelapps/issues"
@@ -19,10 +22,10 @@
     "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
-  },
-  "description": ""
+  }
 }
