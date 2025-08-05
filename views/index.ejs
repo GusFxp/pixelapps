@@ -2,52 +2,35 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PixelApps</title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <canvas id="particle-canvas"></canvas>
     <header class="top-bar">
-      <div class="top-bar-row">
-        <h1 class="logo">
-          <span class="logo-pixel">Pixel</span
-          ><span class="logo-apps">Apps</span>
-        </h1>
-        <a href="/register" class="btn-register">Registrar</a>
-      </div>
-      <form action="/search" method="GET" class="search-form">
-        <input
-          type="text"
-          name="q"
-          class="search-input"
-          placeholder="Pesquisar aplicativos..."
-        />
-        <button type="submit" class="search-button">Buscar</button>
-      </form>
+      <h1>🧩 PixelApps</h1>
+      <p>Loja de aplicativos em estilo futurista</p>
     </header>
 
-    <main>
-      <h2 class="section-title">Últimos Apps</h2>
-      <div class="app-list">
-        <% if (apps.length === 0) { %>
-        <p class="no-apps">Nenhum aplicativo cadastrado ainda.</p>
-        <% } else { %> <% apps.forEach(app => { %>
+    <main class="content">
+      <div class="app-grid">
+        <% apps.forEach(app => { %>
         <div class="app-card">
           <img
-            src="<%= app.imagem || 'https://via.placeholder.com/150' %>"
-            alt="<%= app.name %>"
+            src="<%= app.imagem %>"
+            alt="<%= app.nome %>"
             class="app-image"
           />
-          <div class="app-info">
-            <h3 class="app-name"><%= app.name %></h3>
-            <p class="app-description"><%= app.description %></p>
-          </div>
+          <h3><%= app.nome %></h3>
+          <p class="meta">
+            <strong>Categoria:</strong> <%= app.categoria %><br />
+            <strong>Plataforma:</strong> <%= app.plataforma %><br />
+            <strong>Versão:</strong> <%= app.versao %>
+          </p>
+          <p class="desc"><%= app.descricao %></p>
+          <a href="<%= app.link %>" class="btn" target="_blank">⬇️ Baixar</a>
         </div>
-        <% }) %> <% } %>
+        <% }) %>
       </div>
     </main>
-
-    <script src="/particles.js"></script>
   </body>
 </html>

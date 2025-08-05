@@ -87,3 +87,45 @@ button {
 button:hover {
   background: #00aaff;
 }
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.app-card {
+  background: #01122f;
+  border: 1px solid #00ccff44;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px #00ccff22;
+  transition: transform 0.2s;
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #00ccff55;
+}
+
+.app-image {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #000;
+  margin-bottom: 10px;
+}
+
+.meta {
+  font-size: 0.9em;
+  color: #66ddee;
+  margin: 10px 0;
+}
+
+.desc {
+  font-size: 0.95em;
+  margin: 10px 0;
+  color: #cceeff;
+}

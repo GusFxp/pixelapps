@@ -4,6 +4,8 @@ const sequelize = require("./database");
 const App = require("./models/App");
 
 const adminRouter = require("./routes/admin");
+const publicRouter = require("./routes/public");
+app.use("/", publicRouter);
 
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
