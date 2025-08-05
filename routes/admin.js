@@ -6,7 +6,7 @@ const App = require("../models/App");
 router.get("/", async (req, res) => {
   try {
     const total = await App.count();
-    res.render("admin/dashboard", { total });
+    res.render("admin/dashboard", { total, title: "Dashboard Admin" });
   } catch (error) {
     res.status(500).send("Erro ao carregar dashboard");
   }
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 router.get("/apps", async (req, res) => {
   try {
     const apps = await App.findAll();
-    res.render("admin/apps", { apps });
+    res.render("admin/apps", { apps, title: "Apps cadastrados" });
   } catch (error) {
     res.status(500).send("Erro ao carregar apps");
   }
@@ -24,7 +24,7 @@ router.get("/apps", async (req, res) => {
 
 // Formulário para novo app
 router.get("/apps/new", (req, res) => {
-  res.render("admin/new-app");
+  res.render("admin/new-app", { title: "Novo App" });
 });
 
 // Criar novo app
@@ -52,7 +52,7 @@ router.get("/apps/:id/edit", async (req, res) => {
   try {
     const appToEdit = await App.findByPk(req.params.id);
     if (!appToEdit) return res.status(404).send("App não encontrado");
-    res.render("admin/edit-app", { app: appToEdit });
+    res.render("admin/edit-app", { app: appToEdit, title: "Editar App" });
   } catch (error) {
     res.status(500).send("Erro ao carregar app");
   }
