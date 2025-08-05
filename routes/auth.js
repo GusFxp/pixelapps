@@ -5,7 +5,7 @@ const User = require("../models/User");
 
 // Página de registro
 router.get("/register", (req, res) => {
-  res.render("auth/register", { errors: [], username: "", title: "Registrar" });
+  res.render("auth/register", { title: "Registrar", errors: [], username: "" });
 });
 
 // Recebe dados do registro
@@ -52,7 +52,7 @@ router.post("/register", async (req, res) => {
 
 // Página de login
 router.get("/login", (req, res) => {
-  res.render("auth/login", { title: "Login", errors: [] });
+  res.render("auth/login", { title: "Login", errors: [], username: "" });
 });
 
 // Recebe dados do login
