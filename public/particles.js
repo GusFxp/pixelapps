@@ -1,15 +1,12 @@
 const canvas = document.getElementById("particle-canvas");
 const ctx = canvas.getContext("2d");
 
-let particlesArray = [];
-const particleCount = 80;
-
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
 class Particle {
   constructor() {
@@ -25,7 +22,7 @@ class Particle {
     this.x += this.speedX;
     this.y += this.speedY;
 
-    // quicar nas bordas
+    // Rebate nas bordas
     if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
       this.speedX *= -1;
     }
@@ -43,6 +40,9 @@ class Particle {
     ctx.fill();
   }
 }
+
+let particlesArray = [];
+const particleCount = 80;
 
 function initParticles() {
   particlesArray = [];

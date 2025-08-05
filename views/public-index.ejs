@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <!-- Canvas das partículas no fundo -->
     <canvas id="particle-canvas"></canvas>
+
     <header class="top-bar">
       <div class="top-bar-row">
         <h1 class="logo">
@@ -36,22 +38,26 @@
 
       <div class="app-list">
         <% if (apps.length === 0) { %>
-        <p class="no-apps">Nenhum aplicativo cadastrado ainda.</p>
-        <% } else { %> <% apps.forEach(app => { %>
-        <div class="app-card">
-          <img
-            src="<%= app.imagem || 'https://via.placeholder.com/150' %>"
-            alt="<%= app.name %>"
-            class="app-image"
-          />
-          <div class="app-info">
-            <h3 class="app-name"><%= app.name %></h3>
-            <p class="app-description"><%= app.description %></p>
-          </div>
-        </div>
-        <% }) %> <% } %>
+          <p class="no-apps">Nenhum aplicativo cadastrado ainda.</p>
+        <% } else { %>
+          <% apps.forEach(app => { %>
+            <div class="app-card">
+              <img
+                src="<%= app.imagem || 'https://via.placeholder.com/150' %>"
+                alt="<%= app.name %>"
+                class="app-image"
+              />
+              <div class="app-info">
+                <h3 class="app-name"><%= app.name %></h3>
+                <p class="app-description"><%= app.description %></p>
+              </div>
+            </div>
+          <% }) %>
+        <% } %>
       </div>
     </main>
-    <script src="particles.js"></script>
+
+    <!-- Link para o script das partículas -->
+    <script src="/particles.js"></script>
   </body>
 </html>
