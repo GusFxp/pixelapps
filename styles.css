@@ -1,0 +1,7 @@
+.app-list ul li a img {
+  display: block;
+  margin: 0 auto 8px auto; /* centraliza horizontalmente e dá margem embaixo */
+  border-radius: 8px;
+  max-width: 100px;
+  height: auto;
+}

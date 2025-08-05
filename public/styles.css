@@ -1,0 +1,103 @@
+/* public/styles.css */
+
+body {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  background-color: #020d26;
+  color: #00ccff;
+  background-image: radial-gradient(#00ccff 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.top-bar {
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-bar-row {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+}
+
+.logo-apps {
+  color: #00ccff;
+}
+
+.btn-register {
+  background-color: #00ccff;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.btn-register:hover {
+  transform: scale(1.05);
+}
+
+.search-form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #0d1117;
+  color: white;
+}
+
+.search-button {
+  background-color: #00ccff;
+  color: black;
+  padding: 10px 40px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #00aaff;
+}
+
+.section-title {
+  margin: 40px 20px 10px;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+  }
+
+  .search-form {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+}

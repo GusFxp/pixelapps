@@ -1,0 +1,98 @@
+<!-- views/login.ejs -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - PixelApps</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #001f3f;
+        color: #e0e6f8;
+        font-family: "Orbitron", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      form {
+        background: #111129;
+        padding: 24px 32px;
+        border-radius: 8px;
+        box-shadow: 0 0 12px #00bfffaa;
+        width: 320px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #00bfff;
+      }
+      label {
+        display: block;
+        margin-top: 12px;
+        font-weight: 600;
+      }
+      input {
+        width: 100%;
+        padding: 8px 10px;
+        margin-top: 6px;
+        border: 2px solid #00bfff;
+        border-radius: 6px;
+        background: #0a0a1a;
+        color: #e0e6f8;
+        font-family: "Orbitron", sans-serif;
+        font-size: 1rem;
+      }
+      button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px 0;
+        background: #00bfff;
+        color: #0a0a1a;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 0 15px #00bfffcc;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background: #00d4ff;
+      }
+      .link {
+        margin-top: 14px;
+        text-align: center;
+      }
+      .link a {
+        color: #00bfff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="POST" action="/login">
+      <h1>Login</h1>
+      <label for="login">Usuário ou Email</label>
+      <input type="text" id="login" name="login" required />
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required />
+      <button type="submit">Entrar</button>
+      <div class="link">
+        <a href="/register">Não tem uma conta? Cadastre-se</a>
+      </div>
+      <div class="link">
+        <a href="/forgot-password">Esqueceu a senha?</a>
+      </div>
+    </form>
+  </body>
+</html>

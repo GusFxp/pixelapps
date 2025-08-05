@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= app.name %> - PixelApps</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <span class="title-white">Pixel</span
+        ><span class="title-highlight">Apps</span>
+      </h1>
+    </header>
+
+    <main>
+      <article class="app-detail">
+        <h2><%= app.name %></h2>
+        <p><strong>Versão:</strong> <%= app.version || 'Não informada' %></p>
+        <p>
+          <strong>Plataforma:</strong> <%= app.platform || 'Não informada' %>
+        </p>
+        <p><strong>Descrição:</strong></p>
+        <p><%= app.description || 'Sem descrição' %></p>
+
+        <% if (app.downloadUrl) { %>
+        <a
+          href="<%= app.downloadUrl %>"
+          class="btn-download"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Baixar agora
+        </a>
+        <% } else { %>
+        <p>Download indisponível.</p>
+        <% } %>
+
+        <p><a href="/">← Voltar para a loja</a></p>
+      </article>
+    </main>
+  </body>
+</html>

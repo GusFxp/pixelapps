@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detalhes do App</title>
+    <style>
+      body {
+        font-family: "Orbitron", sans-serif;
+        background-color: #0a0a1a;
+        color: #cbd6f7;
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+      }
+      img {
+        display: block;
+        margin: 0 auto 20px;
+        max-width: 200px;
+        border-radius: 8px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      p.description {
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      a.download {
+        display: block;
+        text-align: center;
+        background-color: #00bfff;
+        color: #0a0a1a;
+        font-weight: 700;
+        padding: 12px 0;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 20px;
+        box-shadow: 0 0 15px #00bfffcc;
+      }
+      a.download:hover {
+        background-color: #00d4ff;
+        box-shadow: 0 0 20px #00d4ffee;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="app-info">
+        <h1>Carregando...</h1>
+      </section>
+    </main>
+
+    <script>
+      async function fetchApps() {
+        const res = await fetch("/api/apps");
+        if (!res.ok) {
+          document.getElementById("app-info").innerHTML =
+            "<p>Erro ao carregar dados.</p>";
+          return null;
+        }
+        return await res.json();
+      }
+
+      function getAppSlug() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("app");
+      }
+
+      function renderApp(app) {
+        if (!app) {
+          document.getElementById("app-info").innerHTML =
+            "<h1>App não encontrado.</h1>";
+          return;
+        }
+        document.getElementById("app-info").innerHTML = `
+          <img src="${app.imagem || ""}" alt="${app.name}" />
+          <h1>${app.name}</h1>
+          <p class="description">${app.description || "Sem descrição"}</p>
+          <p><strong>Plataforma:</strong> ${app.platform || "Não informada"}</p>
+          <p><strong>Versão:</strong> ${app.version || "Não informada"}</p>
+          <a href="${
+            app.downloadUrl || "#"
+          }" target="_blank" class="download" rel="noopener">Baixar</a>
+        `;
+      }
+
+      async function main() {
+        const apps = await fetchApps();
+        if (!apps) return;
+
+        const slug = getAppSlug();
+        if (!slug) {
+          document.getElementById("app-info").innerHTML =
+            "<h1>App não especificado.</h1>";
+          return;
+        }
+
+        const app = apps.find(
+          (a) =>
+            a.name.toLowerCase().replace(/\s+/g, "-") === slug.toLowerCase()
+        );
+        renderApp(app);
+      }
+
+      main();
+    </script>
+  </body>
+</html>

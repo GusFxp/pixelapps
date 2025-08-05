@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Usuários Cadastrados - Admin</title>
+    <style>
+      body {
+        background: #001f3f;
+        color: #e0e6f8;
+        font-family: "Orbitron", sans-serif;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #111129;
+        border: 1px solid #00bfff;
+        box-shadow: 0 0 10px #00bfff88;
+      }
+      th,
+      td {
+        border: 1px solid #00bfff;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background: #00bfff;
+        color: #0a0a1a;
+      }
+      h1 {
+        color: #00bfff;
+      }
+      a {
+        color: #00bfff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Usuários Cadastrados</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Usuário</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <p><a href="/admin">Voltar ao Painel Admin</a></p>
+  </body>
+</html>

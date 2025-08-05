@@ -1,0 +1,122 @@
+<!-- views/admin-users.ejs -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Usuários - Painel Admin</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #121212;
+        color: #eee;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        color: #00bfff;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #1e1e1e;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      th,
+      td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #333;
+        text-align: left;
+      }
+      th {
+        background: #00bfff;
+        color: #121212;
+        font-weight: bold;
+      }
+      tr:hover {
+        background-color: #333;
+      }
+      button {
+        background: #00bfff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        color: #121212;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-right: 8px;
+      }
+      button:hover {
+        background: #0099dd;
+      }
+      form {
+        display: inline;
+      }
+      a.back {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #00bfff;
+        font-weight: bold;
+        border: 2px solid #00bfff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+      }
+      a.back:hover {
+        background-color: #00bfff;
+        color: #121212;
+      }
+      .banned {
+        color: #ff5555;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Usuários Cadastrados</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuário</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if (user.banned) { %>
+            <span class="banned">Banido</span>
+            <% } else { %> Ativo <% } %>
+          </td>
+          <td>
+            <form method="POST" action="/admin/users/ban/<%= user.id %>">
+              <button type="submit">
+                <%= user.banned ? "Desbanir" : "Banir" %>
+              </button>
+            </form>
+            <form
+              method="POST"
+              action="/admin/users/delete/<%= user.id %>"
+              onsubmit="return confirm('Confirma exclusão do usuário?');"
+            >
+              <button type="submit">Excluir</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <a href="/admin" class="back">Voltar ao Painel</a>
+  </body>
+</html>

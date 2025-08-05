@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <%- include('partials/head') %>
+    <title>Novo App - Admin</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        background-color: #0a0a1a; /* fundo escuro conforme painel admin */
+        color: #cbd6f7; /* texto claro */
+        font-family: "Orbitron", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      main {
+        width: 100%;
+        max-width: 480px;
+        background: #111129; /* fundo escuro do painel */
+        padding: 24px 32px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px #00bfff88; /* sombra azul */
+      }
+      input,
+      button {
+        font-family: "Orbitron", sans-serif;
+      }
+      input[type="text"],
+      input[type="url"] {
+        width: 100%;
+        padding: 10px 14px;
+        border: 2px solid #00bfff;
+        border-radius: 6px;
+        background: #0a0a1a;
+        color: #e0e6f8;
+        font-size: 1rem;
+        margin-bottom: 12px;
+        box-shadow: inset 0 0 8px #00bfff66;
+        transition: border-color 0.3s ease;
+      }
+      input[type="text"]:focus,
+      input[type="url"]:focus {
+        border-color: #00d4ff;
+        outline: none;
+        box-shadow: 0 0 10px #00d4ffaa;
+        background: #051527;
+      }
+      button {
+        width: 100%;
+        background-color: #00bfff;
+        color: #0a0a1a;
+        font-weight: 700;
+        font-size: 1.2rem;
+        padding: 12px 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 0 15px #00bfffcc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      button:hover {
+        background-color: #00d4ff;
+        box-shadow: 0 0 20px #00d4ffee;
+      }
+      a {
+        color: #00bfff;
+        text-decoration: none;
+        font-weight: 600;
+        text-align: center;
+        display: block;
+        margin-top: 18px;
+        text-shadow: 0 0 6px #00bfffaa;
+        transition: text-decoration 0.2s ease;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="text-2xl font-bold mb-6" style="text-align: center">
+        Cadastrar Novo App
+      </h1>
+      <form action="/admin/apps/create" method="POST" class="space-y-4">
+        <input type="text" name="name" placeholder="Nome do App" required />
+        <input
+          type="text"
+          name="description"
+          placeholder="Descrição"
+          required
+        />
+        <input type="text" name="category" placeholder="Categoria" required />
+        <input type="text" name="platform" placeholder="Plataforma" required />
+        <input type="text" name="version" placeholder="Versão" />
+        <input type="url" name="downloadUrl" placeholder="Link para download" />
+        <input
+          type="url"
+          name="imagem"
+          placeholder="URL da imagem (opcional)"
+        />
+
+        <button type="submit">Salvar</button>
+      </form>
+      <div class="mt-4" style="text-align: center">
+        <a href="/admin/apps">← Voltar para lista</a>
+      </div>
+    </main>
+  </body>
+</html>

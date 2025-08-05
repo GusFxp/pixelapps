@@ -1,0 +1,43 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PixelApps - Loja de Aplicativos</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <div class="top-bar-row">
+        <h1 class="logo">
+          <span class="logo-pixel">Pixel.</span
+          ><span class="logo-apps">Apps</span>
+        </h1>
+        <a href="/register" class="btn-register">Registrar</a>
+      </div>
+      <form action="/search" method="GET" class="search-form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Pesquisar aplicativos..."
+          class="search-input"
+        />
+        <button type="submit" class="search-button">Buscar</button>
+      </form>
+    </header>
+
+    <!-- Resto do conteúdo -->
+    <main>
+      <h2 class="section-title">Últimos Apps</h2>
+      <!-- Lista de apps -->
+
+      <h2 class="section-title">Categorias</h2>
+      <!-- Lista de categorias -->
+    </main>
+  </body>
+</html>
