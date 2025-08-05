@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <canvas id="particle-canvas"></canvas>
-
     <header class="top-bar">
       <div class="top-bar-row">
         <h1 class="logo">
@@ -41,74 +39,17 @@
         <% } else { %> <% apps.forEach(app => { %>
         <div class="app-card">
           <img
-            src="<%= app.imagem_url %>"
-            alt="<%= app.nome %>"
+            src="<%= app.imagem || 'https://via.placeholder.com/150' %>"
+            alt="<%= app.name %>"
             class="app-image"
           />
           <div class="app-info">
-            <h3 class="app-name"><%= app.nome %></h3>
-            <p class="app-description"><%= app.descricao %></p>
+            <h3 class="app-name"><%= app.name %></h3>
+            <p class="app-description"><%= app.description %></p>
           </div>
         </div>
         <% }) %> <% } %>
       </div>
-
-      <h2 class="section-title">Categorias</h2>
-      <!-- Em breve -->
     </main>
-
-    <script>
-      const canvas = document.getElementById("particle-canvas");
-      const ctx = canvas.getContext("2d");
-
-      let particles = [];
-      const particleCount = 80;
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      window.addEventListener("resize", resizeCanvas);
-      resizeCanvas();
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 0.5,
-          dy: (Math.random() - 0.5) * 0.5,
-        });
-      }
-
-      function drawParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#00ffff";
-        particles.forEach((p) => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fill();
-        });
-      }
-
-      function updateParticles() {
-        particles.forEach((p) => {
-          p.x += p.dx;
-          p.y += p.dy;
-
-          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-        });
-      }
-
-      function animate() {
-        drawParticles();
-        updateParticles();
-        requestAnimationFrame(animate);
-      }
-
-      animate();
-    </script>
   </body>
 </html>
