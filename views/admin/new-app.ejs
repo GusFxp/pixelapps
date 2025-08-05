@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Novo App</title>
+  </head>
+  <body>
+    <h1>Adicionar novo app</h1>
+    <form action="/admin/apps" method="POST">
+      <label
+        >Nome:<br />
+        <input type="text" name="nome" required />
+      </label>
+      <br /><br />
+      <label
+        >Descrição:<br />
+        <textarea name="descricao" required></textarea>
+      </label>
+      <br /><br />
+      <label
+        >Categoria:<br />
+        <input type="text" name="categoria" required />
+      </label>
+      <br /><br />
+      <label
+        >Imagem (URL):<br />
+        <input type="text" name="imagem" />
+      </label>
+      <br /><br />
+      <button type="submit">Salvar</button>
+    </form>
+    <br />
+    <a href="/admin/apps">Voltar à lista</a>
+  </body>
+</html>
