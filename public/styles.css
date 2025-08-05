@@ -1,0 +1,108 @@
+/* Fundo com partículas */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #020d26;
+  overflow-x: hidden;
+  font-family: "Orbitron", sans-serif;
+  color: #00ccff;
+}
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* Topo */
+.top-bar {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.logo span {
+  color: #00ccff;
+}
+
+.btn-register {
+  background-color: #00ccff;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: #00aaff;
+}
+
+/* Lista de apps */
+.app-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.app-card {
+  background-color: #0d1117;
+  border-radius: 12px;
+  padding: 15px;
+  width: 240px;
+  box-shadow: 0 0 10px #00ccff44;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.app-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #00ccff88;
+}
+
+.app-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.app-info {
+  margin-top: 10px;
+}
+
+.app-name {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #00ccff;
+}
+
+.app-description {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 40px 0 20px;
+}
