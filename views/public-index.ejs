@@ -8,10 +8,203 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      /* CSS embutido */
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #020d26;
+        overflow-x: hidden;
+        font-family: "Orbitron", sans-serif;
+        color: #00ccff;
+      }
+
+      canvas#particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+        display: block;
+      }
+
+      .top-bar {
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .top-bar-row {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        color: white;
+        margin: 0;
+      }
+
+      .logo-pixel {
+        color: white;
+      }
+
+      .logo-apps {
+        color: #00ccff;
+      }
+
+      .btn-register {
+        background-color: #00ccff;
+        color: black;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+      }
+
+      .btn-register:hover {
+        transform: scale(1.05);
+      }
+
+      .search-form {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .search-input {
+        width: 100%;
+        max-width: 600px;
+        padding: 10px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 10px;
+        background-color: #0d1117;
+        color: white;
+      }
+
+      .search-button {
+        background-color: #00ccff;
+        color: black;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .search-button:hover {
+        background-color: #00aaff;
+      }
+
+      .section-title {
+        margin: 40px 20px 10px;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .app-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .app-card {
+        background-color: #0d1117;
+        border-radius: 15px;
+        padding: 15px;
+        width: 250px;
+        color: white;
+        box-shadow: 0 0 10px #00ccff33;
+        transition: transform 0.3s ease;
+      }
+
+      .app-card:hover {
+        transform: scale(1.03);
+      }
+
+      .app-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .app-info {
+        margin-top: 10px;
+      }
+
+      .app-name {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #00ccff;
+      }
+
+      .app-description {
+        margin-top: 5px;
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+
+      .no-apps {
+        text-align: center;
+        color: #aaa;
+        margin-top: 20px;
+      }
+
+      @media (min-width: 600px) {
+        .search-form {
+          flex-direction: row;
+          justify-content: center;
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .logo {
+          font-size: 1.2rem;
+        }
+
+        .top-bar-row {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 0 10px;
+        }
+
+        .search-form {
+          margin-top: 10px;
+          flex-direction: column;
+          align-items: stretch;
+          padding: 0 10px;
+        }
+
+        .search-input,
+        .search-button {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Canvas das partículas no fundo -->
     <canvas id="particle-canvas"></canvas>
 
     <header class="top-bar">
@@ -35,7 +228,6 @@
 
     <main>
       <h2 class="section-title">Últimos Apps</h2>
-
       <div class="app-list">
         <% if (apps.length === 0) { %>
         <p class="no-apps">Nenhum aplicativo cadastrado ainda.</p>
@@ -55,7 +247,69 @@
       </div>
     </main>
 
-    <!-- Link para o script das partículas -->
-    <script src="/particles.js"></script>
+    <script>
+      // Partículas JS direto aqui
+      window.addEventListener("load", () => {
+        const canvas = document.getElementById("particle-canvas");
+        const ctx = canvas.getContext("2d");
+
+        let particles = [];
+        const particleCount = 100;
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * 2 + 1;
+            this.dx = (Math.random() - 0.5) * 0.5;
+            this.dy = (Math.random() - 0.5) * 0.5;
+            this.color = "rgba(0, 204, 255, 0.7)";
+          }
+
+          update() {
+            this.x += this.dx;
+            this.y += this.dy;
+            if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
+          }
+
+          draw() {
+            ctx.beginPath();
+            ctx.fillStyle = this.color;
+            ctx.shadowColor = this.color;
+            ctx.shadowBlur = 10;
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        function initParticles() {
+          particles = [];
+          for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+          }
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach((p) => {
+            p.update();
+            p.draw();
+          });
+          requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
+      });
+    </script>
   </body>
 </html>
