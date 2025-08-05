@@ -25,6 +25,7 @@ app.get("/", async (req, res) => {
     res.status(500).send("Erro ao carregar apps");
   }
 });
+sequelize.sync({ force: true });
 
 sequelize
   .sync()

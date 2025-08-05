@@ -12,23 +12,32 @@ router.get("/apps", async (req, res) => {
   }
 });
 
-// Formulário novo app
+// Formulário para novo app
 router.get("/apps/new", (req, res) => {
   res.render("admin/new-app");
 });
 
-// Criar app
+// Criar novo app
 router.post("/apps", async (req, res) => {
   try {
-    const { nome, descricao, categoria, imagem } = req.body;
-    await App.create({ nome, descricao, categoria, imagem });
+    const { nome, descricao, categoria, plataforma, versao, link, imagem } =
+      req.body;
+    await App.create({
+      nome,
+      descricao,
+      categoria,
+      plataforma,
+      versao,
+      link,
+      imagem,
+    });
     res.redirect("/admin/apps");
   } catch (error) {
     res.status(500).send("Erro ao criar app");
   }
 });
 
-// Formulário edição app
+// Formulário de edição
 router.get("/apps/:id/edit", async (req, res) => {
   try {
     const appToEdit = await App.findByPk(req.params.id);
@@ -42,10 +51,19 @@ router.get("/apps/:id/edit", async (req, res) => {
 // Atualizar app
 router.post("/apps/:id", async (req, res) => {
   try {
-    const { nome, descricao, categoria, imagem } = req.body;
+    const { nome, descricao, categoria, plataforma, versao, link, imagem } =
+      req.body;
     const appToUpdate = await App.findByPk(req.params.id);
     if (!appToUpdate) return res.status(404).send("App não encontrado");
-    await appToUpdate.update({ nome, descricao, categoria, imagem });
+    await appToUpdate.update({
+      nome,
+      descricao,
+      categoria,
+      plataforma,
+      versao,
+      link,
+      imagem,
+    });
     res.redirect("/admin/apps");
   } catch (error) {
     res.status(500).send("Erro ao atualizar app");

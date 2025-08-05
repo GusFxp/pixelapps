@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../database"); // assume que database.js exporta a conexão Sequelize
+const sequelize = require("../database");
 
 const App = sequelize.define("App", {
   id: {
@@ -19,8 +19,20 @@ const App = sequelize.define("App", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  plataforma: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  versao: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  link: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   imagem: {
-    type: DataTypes.STRING, // URL ou caminho da imagem
+    type: DataTypes.STRING,
     allowNull: true,
   },
 });

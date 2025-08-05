@@ -9,14 +9,21 @@
     <form action="/admin/apps/<%= app.id %>" method="POST">
       <label
         >Nome:<br />
-        <input type="text" name="nome" value="<%= app.nome %>" required />
-      </label>
-      <br /><br />
+        <input
+          type="text"
+          name="nome"
+          value="<%= app.nome %>"
+          required
+        /> </label
+      ><br /><br />
+
       <label
         >Descrição:<br />
-        <textarea name="descricao" required><%= app.descricao %></textarea>
-      </label>
-      <br /><br />
+        <textarea name="descricao" required>
+<%= app.descricao %></textarea
+        ></label
+      ><br /><br />
+
       <label
         >Categoria:<br />
         <input
@@ -24,16 +31,47 @@
           name="categoria"
           value="<%= app.categoria %>"
           required
-        />
-      </label>
-      <br /><br />
+        /> </label
+      ><br /><br />
+
+      <label
+        >Plataforma:<br />
+        <input
+          type="text"
+          name="plataforma"
+          value="<%= app.plataforma %>"
+          required
+        /> </label
+      ><br /><br />
+
+      <label
+        >Versão:<br />
+        <input
+          type="text"
+          name="versao"
+          value="<%= app.versao %>"
+          required
+        /> </label
+      ><br /><br />
+
+      <label
+        >Link para download:<br />
+        <input
+          type="text"
+          name="link"
+          value="<%= app.link %>"
+          required
+        /> </label
+      ><br /><br />
+
       <label
         >Imagem (URL):<br />
-        <input type="text" name="imagem" value="<%= app.imagem %>" />
-      </label>
-      <br /><br />
+        <input type="text" name="imagem" value="<%= app.imagem %>" /> </label
+      ><br /><br />
+
       <button type="submit">Atualizar</button>
     </form>
+
     <br />
     <a href="/admin/apps">Voltar à lista</a>
   </body>
