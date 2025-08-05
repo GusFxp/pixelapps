@@ -9,6 +9,8 @@ const publicRouter = require("./routes/public");
 const app = express(); // declara o app antes de usar
 
 const expressLayouts = require("express-ejs-layouts");
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(expressLayouts);
 app.set("layout", "layout"); // usa views/layout.ejs por padrão
 
