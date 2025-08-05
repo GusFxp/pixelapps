@@ -1,0 +1,28 @@
+// === views/admin/dashboard.ejs ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Admin - PixelApps</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Painel Administrativo</h1>
+
+    <form action="/admin/add" method="POST">
+      <input type="text" name="name" placeholder="Nome" required />
+      <input type="text" name="imagem" placeholder="URL da Imagem" />
+      <textarea name="description" placeholder="Descrição"></textarea>
+      <button type="submit">Adicionar App</button>
+    </form>
+
+    <hr />
+    <h2>Aplicativos Cadastrados</h2>
+    <ul>
+      <% apps.forEach(app => { %>
+      <li><strong><%= app.name %></strong> - <%= app.description %></li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

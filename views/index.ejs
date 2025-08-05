@@ -1,0 +1,54 @@
+// === views/index.ejs ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelApps</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <canvas id="particle-canvas"></canvas>
+    <header class="top-bar">
+      <div class="top-bar-row">
+        <h1 class="logo">
+          <span class="logo-pixel">Pixel</span
+          ><span class="logo-apps">Apps</span>
+        </h1>
+        <a href="/register" class="btn-register">Registrar</a>
+      </div>
+      <form action="/search" method="GET" class="search-form">
+        <input
+          type="text"
+          name="q"
+          class="search-input"
+          placeholder="Pesquisar aplicativos..."
+        />
+        <button type="submit" class="search-button">Buscar</button>
+      </form>
+    </header>
+
+    <main>
+      <h2 class="section-title">Últimos Apps</h2>
+      <div class="app-list">
+        <% if (apps.length === 0) { %>
+        <p class="no-apps">Nenhum aplicativo cadastrado ainda.</p>
+        <% } else { %> <% apps.forEach(app => { %>
+        <div class="app-card">
+          <img
+            src="<%= app.imagem || 'https://via.placeholder.com/150' %>"
+            alt="<%= app.name %>"
+            class="app-image"
+          />
+          <div class="app-info">
+            <h3 class="app-name"><%= app.name %></h3>
+            <p class="app-description"><%= app.description %></p>
+          </div>
+        </div>
+        <% }) %> <% } %>
+      </div>
+    </main>
+
+    <script src="/particles.js"></script>
+  </body>
+</html>
