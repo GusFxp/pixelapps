@@ -16,6 +16,9 @@ sequelize
   .catch(console.error);
 
 // Sua aplicação aqui...
+app.get("/", (req, res) => {
+  res.send("Bem-vindo ao PixelApps!");
+});
 
 app.listen(3000, () => {
   console.log("Servidor rodando na porta 3000");
