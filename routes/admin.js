@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const App = require("../models/App");
+const { ensureAuthenticated } = require("../middleware/auth");
 
+// Aplica o middleware para todas as rotas admin
+router.use(ensureAuthenticated);
 // Dashboard admin
 router.get("/", async (req, res) => {
   try {

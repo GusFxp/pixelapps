@@ -1,31 +1,26 @@
 <% if (errors && errors.length) { %>
-<ul style="color: red">
-  <% errors.forEach(err => { %>
-  <li><%= err %></li>
-  <% }) %>
-</ul>
-<% } %> <% if (success_msg) { %>
-<p style="color: green"><%= success_msg %></p>
+  <ul style="color: red;">
+    <% errors.forEach(err => { %>
+      <li><%= err %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<% if (success_msg) { %>
+  <p style="color: green;"><%= success_msg %></p>
 <% } %>
 
 <h2>Login</h2>
-<form action="/login" method="POST">
-  <label
-    >Usuário:<br />
-    <input
-      type="text"
-      name="username"
-      value="<%= username || '' %>"
-      required
-    /> </label
-  ><br /><br />
+<form action="/auth/login" method="POST">
+  <label>Usuário:<br />
+    <input type="text" name="username" value="<%= username || '' %>" required />
+  </label><br /><br />
 
-  <label
-    >Senha:<br />
-    <input type="password" name="password" required /> </label
-  ><br /><br />
+  <label>Senha:<br />
+    <input type="password" name="password" required />
+  </label><br /><br />
 
   <button type="submit">Entrar</button>
 </form>
 
-<p>Não tem conta? <a href="/register">Registre-se</a></p>
+<p>Não tem conta? <a href="/auth/register">Registre-se</a></p>

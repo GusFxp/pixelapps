@@ -43,7 +43,7 @@ router.post("/register", async (req, res) => {
     await User.create({ username, passwordHash });
 
     req.flash("success_msg", "Registrado com sucesso! Faça login.");
-    res.redirect("/login");
+    res.redirect("/auth/login");
   } catch (err) {
     console.error(err);
     res.status(500).send("Erro no servidor");
@@ -90,7 +90,7 @@ router.post("/login", async (req, res) => {
 // Logout
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/login");
+    res.redirect("/auth/login");
   });
 });
 
