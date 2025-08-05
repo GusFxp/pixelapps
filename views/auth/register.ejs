@@ -1,0 +1,34 @@
+<% if (errors && errors.length) { %>
+<ul style="color: red">
+  <% errors.forEach(err => { %>
+  <li><%= err %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<h2>Registrar</h2>
+<form action="/register" method="POST">
+  <label
+    >Usuário:<br />
+    <input
+      type="text"
+      name="username"
+      value="<%= username || '' %>"
+      required
+    /> </label
+  ><br /><br />
+
+  <label
+    >Senha:<br />
+    <input type="password" name="password" required /> </label
+  ><br /><br />
+
+  <label
+    >Confirmar senha:<br />
+    <input type="password" name="password2" required /> </label
+  ><br /><br />
+
+  <button type="submit">Registrar</button>
+</form>
+
+<p>Já tem conta? <a href="/login">Faça login</a></p>

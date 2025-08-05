@@ -10,7 +10,9 @@
       <h1>PixelApps - Admin</h1>
       <nav>
         <a href="/admin">🏠 Dashboard</a> | <a href="/admin/apps">📋 Apps</a> |
-        <a href="/admin/apps/new">➕ Novo App</a>
+        <a href="/admin/apps/new">➕ Novo App</a> | <% if (user) { %> Olá, <%=
+        user.username %> | <a href="/auth/logout">Sair</a>
+        <% } %>
       </nav>
     </header>
 
