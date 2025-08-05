@@ -1,17 +1,67 @@
-// === routes/admin.js ===
 const express = require("express");
 const router = express.Router();
 const App = require("../models/App");
 
-router.get("/", async (req, res) => {
-  const apps = await App.findAll();
-  res.render("admin/dashboard", { apps });
+// Listar apps
+router.get("/apps", async (req, res) => {
+  try {
+    const apps = await App.findAll();
+    res.render("admin/apps", { apps });
+  } catch (error) {
+    res.status(500).send("Erro ao carregar apps");
+  }
 });
 
-router.post("/add", async (req, res) => {
-  const { name, description, imagem } = req.body;
-  await App.create({ name, description, imagem });
-  res.redirect("/admin");
+// Formulário novo app
+router.get("/apps/new", (req, res) => {
+  res.render("admin/new-app");
+});
+
+// Criar app
+router.post("/apps", async (req, res) => {
+  try {
+    const { nome, descricao, categoria, imagem } = req.body;
+    await App.create({ nome, descricao, categoria, imagem });
+    res.redirect("/admin/apps");
+  } catch (error) {
+    res.status(500).send("Erro ao criar app");
+  }
+});
+
+// Formulário edição app
+router.get("/apps/:id/edit", async (req, res) => {
+  try {
+    const appToEdit = await App.findByPk(req.params.id);
+    if (!appToEdit) return res.status(404).send("App não encontrado");
+    res.render("admin/edit-app", { app: appToEdit });
+  } catch (error) {
+    res.status(500).send("Erro ao carregar app");
+  }
+});
+
+// Atualizar app
+router.post("/apps/:id", async (req, res) => {
+  try {
+    const { nome, descricao, categoria, imagem } = req.body;
+    const appToUpdate = await App.findByPk(req.params.id);
+    if (!appToUpdate) return res.status(404).send("App não encontrado");
+    await appToUpdate.update({ nome, descricao, categoria, imagem });
+    res.redirect("/admin/apps");
+  } catch (error) {
+    res.status(500).send("Erro ao atualizar app");
+  }
+});
+
+// Deletar app
+router.post("/apps/:id/delete", async (req, res) => {
+  try {
+    const appToDelete = await App.findByPk(req.params.id);
+    if (!appToDelete) return res.status(404).send("App não encontrado");
+    await appToDelete.destroy();
+    res.redirect("/admin/apps");
+  } catch (error) {
+    res.status(500).send("Erro ao deletar app");
+  }
 });
 
 module.exports = router;
